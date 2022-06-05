@@ -1,0 +1,388 @@
+{% extends 'bootstrap/homepage.html' %}
+{% load static %}
+{% block content %}
+{% include 'include/header.html' %}
+
+
+		<div>
+            <!-- ============================================================== -->
+            <!-- Top header  -->
+
+			<!-- Top header  -->
+			<!-- ============================================================== -->
+			
+			
+			<!-- ============================ Hero Banner  Start================================== -->
+			<div class="hero_banner image-cover" style="background:#03b97c url(https://leverageedublog.s3.ap-south-1.amazonaws.com/blog/wp-content/uploads/2020/05/20191333/Online-Learning-Platforms.jpg) no-repeat;" data-overlay="5">
+				<div class="container">
+					<div class="row align-items-center">
+						<div class="col-xl-6 col-lg-7 col-md-8 col-sm-12">
+							<div class="simple-search-wrap text-left">
+								<div class="hero_search-2">
+									{% for crs in courses %}
+									<div style="padding: 0px 20px;" class="elsio_tag"><h4 style="line-height: 40px; padding-top: 5px; ">📚 {{ home.definition }} 📚</h4></div>
+									<h1 class="banner_title mb-4">Найдите самые захватывающие онлайн-курсы</h1>
+									<p class="font-lg mb-4">{{ home.description }}</p>
+									<form action="{% url 'course_detail' crs.id%}">
+									<div class="input-group simple_search">
+											<i class="fa fa-search ico"></i>
+											<input type="text" name="key" class="form-control" placeholder="Найдите свои курсы">
+											<div class="input-group-append">
+												<button class="btn theme-bg" type="submit">Искать</button>
+											</div>
+										</div>
+									</form>
+									{% endfor %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- ============================ Hero Banner End ================================== -->
+			
+			<!-- ============================ Our Awards Start ================================== -->
+			<section class="p-0">
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-lg-12 col-md-12 col-sm-12">
+							<div class="crp_box sm ovr_top">
+								<div class="row align-items-center m-0">
+									<div class="col-xl-2 col-lg-3 col-md-4 col-sm-12">
+										<div class="crt_169">
+											<div class="crt_overt"><h4>4.7</h4></div>
+											<div class="crt_stion">
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+											</div>
+											<div class="crt_io90"><h6>3,272 Rating</h6></div>
+										</div>
+									</div>
+									<div class="col-xl-10 col-lg-9 col-md-8 col-sm-12">
+										<div class="part_rcp">
+											<ul>
+												<li><div class="crp_img"><img src="{% static 'assets/img/lg-1.png' %}" class="img-fluid" alt="" /></div></li>
+												<li><div class="crp_img"><img src="{% static 'assets/img/lg-5.png' %}" class="img-fluid" alt="" /></div></li>
+												<li><div class="crp_img"><img src="{% static 'assets/img/lg-6.png' %}" class="img-fluid" alt="" /></div></li>
+												<li><div class="crp_img"><img src="{% static 'assets/img/lg-7.png' %}" class="img-fluid" alt="" /></div></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- ============================ Our Awards End ================================== -->
+			
+			<!-- ============================ Top Categories Start ================================== -->
+			<section class="min">
+				<div class="container">
+				
+					<div class="row justify-content-center">
+						<div class="col-lg-7 col-md-10 text-center">
+							<div class="sec-heading center mb-4">
+								<h2>Топовые<span class="theme-cl"> Сферы 🔥</span></h2>
+								<p>Здесь важно найти разумный баланс между востребованностью направления и вашим собственным интересом. В конечном счете, если вы станете действительно квалифицированным специалистом, то сможете зарабатывать неплохие деньги в любой области. 
+								</p>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						{% for category in categories %}
+						<div class="col-lg-4 col-md-4 col-sm-6">
+							<div class="edu_cat_2 cat-1">
+								<div class="edu_cat_icons">
+									<a class="pic-main" href="#"><img src="{{ category.image.url }}" class="img-fluid" alt="" /></a>
+								</div>
+								<div class="edu_cat_data">
+									<h4 class="title"><a href="#">{{ category.title }}</a></h4>
+									<ul class="meta">
+										<li class="video">{{ category.quotes }}</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						{% endfor %}						
+					</div>
+					
+				</div>
+			</section>
+			<!-- ============================ Top Categories End ================================== -->
+			
+			
+			<!-- ============================ Latest Cources Start ================================== -->
+			<section class="min">
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-lg-7 col-md-8">
+							<div class="sec-heading center">
+								<h2>Выберите свое <span class="theme-cl">направление 🚀</span></h2>
+								<!-- <p>Здесь вы можете выбрать</p> -->
+							</div>
+						</div>
+					</div>
+					<div class="row justify-content-center">
+						<!-- Single Grid -->
+						{% for course in courses %}
+						<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+							<div class="crs_grid">
+								<div class="crs_grid_thumb">
+									<a href="{% url 'course_detail' course.id %}" class="crs_detail_link">
+									<img src="{{ course.course_image.url }}" class="img-fluid rounded" alt="" />
+									</a>
+								</div>
+								<div class="crs_grid_caption">
+									<div class="flex">
+										<div class="crs_cates cl_1"><span>{{ course.category }}</span></div>
+										<div class="crs_cates w123 cl_3">
+											<span>{{ course.sub_category }}</span>
+										</div>
+									</div>
+									<div class="crs_title">
+										<h4><a href="{% url 'course_detail' course.id %}" class="crs_title_link">{{ course.title }}</a></h4>
+									</div>
+									<div class="crs_info_detail">
+										<ul>
+											<li><i class="fa fa-clock text-danger"></i><span>{{ course.spendtime }}</span></li>
+											<li><h2>👨🏼‍🎓</h2><span>{{ course.students }}</span></li>
+											<li><h2>💰</h2><span>{{ course.price_info }}</span></li>
+										</ul>
+									</div>
+								</div>
+								<div class="crs_grid_foot">
+									<div class="crs_flex">
+										<div class="crs_fl_first">
+											<div class="crs_price">
+												<h2><span class="theme-cl">{{ course.price }} </span><span class="currency">  сом</span></h2>
+											</div>
+										</div>
+										<div class="crs_fl_last">
+											<div class="crs_linkview"><a href="{% url 'enroll' %}" class="btn btn_view_detail theme-bg text-light">Записаться</a></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						{% endfor %}						
+					</div>
+				</div>
+			</section>
+			<!-- ============================ Latest Cources End ================================== -->
+
+			<!-- ============================ Students Reviews ================================== -->
+			<section class="gray">
+				<div class="container">
+				
+					<div class="row justify-content-center">
+						<div class="col-lg-7 col-md-8">
+							<div class="sec-heading center">
+								<h2><span class="theme-cl">Отзывы</span> наших студентов 👨🏼‍🎓</h2>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row justify-content-center">
+						<div class="col-xl-12 col-lg-12 col-sm-12">
+							<div class="reviews-slide space">
+								
+								<!-- Single Item -->
+								{% for comment in comments %}
+								<div class="single_items lios_item">
+									<div class="_testimonial_wrios shadow_none">
+										<div class="_testimonial_flex">
+											<div class="_testimonial_flex_first">
+												{% if comment.user.profile_image %}
+												<div class="_tsl_flex_thumb">
+													<img src="{{ user.profile_image.url }}" class="img-fluid" alt="">
+												</div>
+												{% else %}
+												<div class="_tsl_flex_thumb">
+													<img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/No-photo-m.png" class="img-fluid" alt="">
+												</div>
+												{% endif %}
+												<div class="_tsl_flex_capst">
+													<h5>{{ comment.user }}</h5>
+													<div class="_ovr_posts"><span>Студент</span></div>
+													<div class="_ovr_rates"><span><i class="fa fa-star"></i></span>4.7</div>
+												</div>
+											</div>
+										</div>
+										
+										<div class="facts-detail">
+											<p>{{ comment.message }}</p>
+										</div>
+									</div>
+								</div>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</section>
+			<!-- ============================ Students Reviews End ================================== -->
+			
+			<!-- ============================ article Start ================================== -->
+			<section class="min">
+				<div class="container">
+				
+					<div class="row justify-content-center">
+						<div class="col-lg-7 col-md-8">
+							<div class="sec-heading center">
+								<h2>Последние новости & <span class="theme-cl">статьи</span></h2>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row justify-content-center">
+						
+						<!-- Single Item -->
+						<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+							<div class="blg_grid_box">
+								{% for new in news %}
+								<div class="blg_grid_thumb">
+									<a href="blog-detail.html"><img src="{{ new.news_image.url }}" class="img-fluid" alt="" /></a>
+								</div>
+								<div class="blg_grid_caption">
+									<div class="blg_tag"><span>{{ new.news_category }}</span></div>
+									<div class="blg_title"><h4><a href="blog-detail.html">{{ new.title }}</a></h4></div>
+									<div class="blg_desc"><p>{{ new.description |truncatewords:11}}</p></div>
+								</div>
+								<div class="crs_grid_foot">
+									<div class="crs_flex">
+										<div class="crs_fl_first">
+											<div class="crs_tutor">
+												<div class="crs_tutor_thumb"><a href="instructor-detail.html"><img src="assets/img/team-5.jpg" class="img-fluid circle" alt="" /></a></div>
+											</div>
+										</div>
+										<div class="crs_fl_last">
+											<div class="foot_list_info">
+												<ul>
+													<li><div class="elsio_ic"><i class="fa fa-eye text-success"></i></div><div class="elsio_tx">10k Views</div></li>
+													<li><div class="elsio_ic"><i class="fa fa-clock text-warning"></i></div><div class="elsio_tx">10 July 2021</div></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								{% endfor %}
+							</div>
+						</div>	
+					</div>
+				</div>
+			</section>
+			<div class="clearfix"></div>
+			<!-- ============================ article End ================================== -->
+			
+			<!-- ============================ Call To Action ================================== -->
+			<section class="theme-bg call_action_wrap-wrap">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							
+							<div class="call_action_wrap">
+								<div class="call_action_wrap-head">
+									<h3>У вас есть вопросы ?</h3>
+									<span>Мы поможем вам в карьерном росте и развитии.</span>
+								</div>
+								<a href="#" class="btn btn-call_action_wrap">Связаться с нами сейчас</a>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- ============================ Call To Action End ================================== -->
+			
+			<!-- ============================ Footer Start ================================== -->
+			{% include 'include/footer.html' %}  
+			<!-- ============================ Footer End ================================== -->
+			
+			<!-- Log In Modal -->
+			<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="loginmodal" aria-hidden="true">
+				<div class="modal-dialog modal-xl login-pop-form" role="document">
+					<div class="modal-content overli" id="loginmodal">
+						<div class="modal-header">
+							<h5 class="modal-title">Login Your Account</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							  <span aria-hidden="true"><i class="fas fa-times-circle"></i></span>
+							</button>
+						  </div>
+						<div class="modal-body">
+							<div class="login-form">
+								<form action="." method="POST">
+									{{ form.as_p }}
+                                    {% csrf_token %}
+									<div class="form-group">
+										<label>User Name</label>
+										<div class="input-with-icon">
+											<input type="text" class="form-control" placeholder="User or email">
+											<i class="ti-user"></i>
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<label>Password</label>
+										<div class="input-with-icon">
+											<input type="password" class="form-control" placeholder="*******">
+											<i class="ti-unlock"></i>
+										</div>
+									</div>
+									
+									<div class="form-group row">
+										<div class="col-xl-4 col-lg-4 col-4">
+											<input id="admin" class="checkbox-custom" name="admin" type="checkbox">
+											<label for="admin" class="checkbox-custom-label">Admin</label>
+										</div>
+										<div class="col-xl-4 col-lg-4 col-4">
+											<input id="student" class="checkbox-custom" name="student" type="checkbox" checked>
+											<label for="student" class="checkbox-custom-label">Student</label>
+										</div>
+										<div class="col-xl-4 col-lg-4 col-4">
+											<input id="instructor" class="checkbox-custom" name="instructor" type="checkbox">
+											<label for="instructor" class="checkbox-custom-label">Tutors</label>
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<button type="submit" class="btn btn-md full-width theme-bg text-white">Login</button>
+									</div>
+									
+									<div class="rcs_log_125 pt-2 pb-3">
+										<span>Or Login with Social Info</span>
+									</div>
+									<div class="rcs_log_126 full">
+										<ul class="social_log_45 row">
+											<li class="col-xl-4 col-lg-4 col-md-4 col-4"><a href="javascript:void(0);" class="sl_btn"><i class="ti-facebook text-info"></i>Facebook</a></li>
+											<li class="col-xl-4 col-lg-4 col-md-4 col-4"><a href="javascript:void(0);" class="sl_btn"><i class="ti-google text-danger"></i>Google</a></li>
+											<li class="col-xl-4 col-lg-4 col-md-4 col-4"><a href="javascript:void(0);" class="sl_btn"><i class="ti-twitter theme-cl"></i>Twitter</a></li>
+										</ul>
+									</div>
+								
+								</form>
+							</div>
+						</div>
+						<div class="crs_log__footer d-flex justify-content-between mt-0">
+							<div class="fhg_45"><p class="musrt">Don't have account? <a href="signup.html" class="theme-cl">SignUp</a></p></div>
+							<div class="fhg_45"><p class="musrt"><a href="forgot.html" class="text-danger">Forgot Password?</a></p></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End Modal -->
+			
+			<a id="back2Top" class="top-scroll" title="Back to top" href="{% url 'index' %}"><i class="ti-arrow-up"></i></a>
+			
+
+		</div>
+		<!-- ============================================================== -->
+		<!-- End Wrapper -->
+		<!-- ============================================================== -->
+
+		{% endblock %}

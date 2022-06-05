@@ -1,0 +1,83 @@
+{% load static %}
+        <!-- ============================================================== -->
+        <!-- Main wrapper - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <div id="main-wrapper">
+		
+            <!-- ============================================================== -->
+            <!-- Top header  -->
+            <!-- ============================================================== -->
+            <!-- Start Navigation -->
+			<div class="header header-transparent change-logo">
+				<div class="container">
+					<nav id="navigation" class="navigation navigation-landscape">
+						<div class="nav-header">
+							<a class="nav-brand static-logo" href="{% url 'index' %}"><img src="{% static 'assets/img/logo-light.png' %}" class="logo" alt="" /></a>
+							<a class="nav-brand fixed-logo" href="{% url 'index' %}"><img src="{% static 'assets/img/logo.png' %}" class="logo" alt="" /></a>
+							<div class="nav-toggle"></div>
+							<div class="mobile_nav">
+								<ul>
+									<li>
+										<a href="javascript:void(0);" data-toggle="modal" data-target="#login" class="crs_yuo12 w-auto text-white theme-bg">
+											<span class="embos_45"><i class="fas fa-sign-in-alt mr-1"></i>Sign In</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="nav-menus-wrapper">
+							<ul class="nav-menu" >
+							
+								<li><a href="{% url 'index' %}">Главная страница<span class="submenu-indicator"></span></a></li>
+								
+								<li><a href="{% url 'allcourses' %}">Курсы<span class="submenu-indicator"></span></a></li>
+								
+								<li><a>Категории<span class="submenu-indicator"></span></a>
+									<ul class="nav-dropdown nav-submenu">
+										<li><a href="{% url 'research' %}">Изучить все категории</a></li>
+										<li><a href="find-instructor.html">Найти инструктора</a></li>
+										<li><a href="instructor-detail.html">Информация об инструкторе</a></li>
+									</ul>
+								</li>
+								
+								
+								
+							</ul>
+							{% if user.is_authenticated %}
+							<ul class="nav-menu nav-menu-social align-to-right">
+    							<li>
+        							<a href="{% url 'index' %}" class="text-black">{{ user.username }}</a>
+        							<ul class="nav-dropdown nav-submenu">
+            							{% if user.is_superuser %}
+            							<li><a href="explore-category.html">Системные настройки</a></li>
+										<li><a href="explore-category.html">Настройки платежа</a></li>
+										<li><a href="{% url 'panel' %}">Приборная панель</a></li>
+            							{% endif %}
+            							<li><a href="{% url 'logout' %}">Выйти</a></li>
+        							</ul>
+    							</li>
+    							<li class="add-listing theme-bg">
+        							<a href="{% url 'user_profile' user.id %}" class="text-white">Мой аккаунт</a>
+    							</li>
+							</ul>
+							{% else %}
+							<ul class="nav-menu nav-menu-social align-to-right">
+    							<li>
+        							<a href="{% url 'user_login' %}"data-toggle="modal" data-target="#login">
+        							<a href="{% url 'user_login' %}"><i class="fas fa-sign-in-alt mr-1"></i><span class="dn-lg">Войти</span></a>
+        							</a>
+    							</li>
+    							<li class="add-listing theme-bg">
+        							<a href="{% url 'register' %}" class="text-white">Зарегистрироваться</a>
+    							</li>
+							</ul>
+							{% endif %}
+						</div>
+					</nav>
+				</div>
+			</div>
+			<!-- End Navigation -->
+			<div class="clearfix"></div>
+			<!-- ============================================================== -->
+			<!-- Top header  -->
+			<!-- ============================================================== -->
