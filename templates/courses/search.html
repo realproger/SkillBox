@@ -8,6 +8,7 @@
 			<div class="ed_detail_head bg-cover" style="background:#f4f4f4 url(https://thumbs.dreamstime.com/z/online-education-platform-concept-banner-header-students-using-e-learning-video-laptop-graduation-cap-teaching-footer-141198518.jpg);" data-overlay="8">
 				<div class="container">
 					<div class="row align-items-center">
+                        {% for course in courses %}
 						<div class="col-lg-7 col-md-7">
 							<div class="ed_detail_wrap light">
 								<div class="crs_cates cl_9">
@@ -44,6 +45,7 @@
 								</div>
 							</div>
 						</div>
+                        {% endfor %}
 					</div>
 				</div>
 			</div>
@@ -53,7 +55,7 @@
 			<section class="gray pt-3">
 				<div class="container">
 					<div class="row justify-content-between">
-					
+                        {% for course in courses %}
 						<div class="col-lg-8 col-md-12 order-lg-first">
 							
 							<!-- All Info Show in Tab -->
@@ -201,7 +203,6 @@
 													{% endif %}
 													<div class="reviews-comments-item-text">
 														<h4><a href="#">{{ comment.user }}</a><span class="reviews-comments-item-date"><i class="ti-calendar theme-cl"></i>{{ comment.created }}</span></h4>
-														
 														<div class="listing-rating"><i class="fas fa-star active"></i><i class="fas fa-star active"></i><i class="fas fa-star active"></i><i class="fas fa-star active"></i><i class="fas fa-star active"></i></div>
 														<div class="clearfix"></div>
 														<p>{{ comment.message }}</p>
@@ -252,12 +253,9 @@
                                             </ul>                                         
                                             {% endif %}
 										</div>
-							
 									</div>
-									
 								</div>
 							</div>
-							
 						</div>
 						
 						<!-- Sidebar -->
@@ -297,7 +295,7 @@
 							</div>
 							
 						</div>
-					
+					    {% endfor %}
 					</div>
 				</div>
 			</section>

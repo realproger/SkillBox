@@ -25,6 +25,7 @@ urlpatterns = [
     path('', include('apps.users.urls')),
     path('', include('apps.courses.urls')),
     path('', include('apps.categories.urls')),
+    path('', include('apps.news.urls')),
     path('accounts/', include('allauth.urls')),
     path('logout/', LogoutView.as_view(), name='logout'),
 ]

@@ -19,11 +19,10 @@
 						<div class="col-xl-6 col-lg-7 col-md-8 col-sm-12">
 							<div class="simple-search-wrap text-left">
 								<div class="hero_search-2">
-									{% for crs in courses %}
 									<div style="padding: 0px 20px;" class="elsio_tag"><h4 style="line-height: 40px; padding-top: 5px; ">📚 {{ home.definition }} 📚</h4></div>
-									<h1 class="banner_title mb-4">Найдите самые захватывающие онлайн-курсы</h1>
+									<h1 class="banner_title mb-4"></h1>
 									<p class="font-lg mb-4">{{ home.description }}</p>
-									<form action="{% url 'course_detail' crs.id%}">
+									<form action="{% url 'course_search' %}">
 									<div class="input-group simple_search">
 											<i class="fa fa-search ico"></i>
 											<input type="text" name="key" class="form-control" placeholder="Найдите свои курсы">
@@ -32,7 +31,6 @@
 											</div>
 										</div>
 									</form>
-									{% endfor %}
 								</div>
 							</div>
 						</div>
@@ -101,7 +99,7 @@
 									<a class="pic-main" href="#"><img src="{{ category.image.url }}" class="img-fluid" alt="" /></a>
 								</div>
 								<div class="edu_cat_data">
-									<h4 class="title"><a href="#">{{ category.title }}</a></h4>
+									<h4 class="title"><a href="{% url 'sort_course' category.id %}">{{ category.title }}</a></h4>
 									<ul class="meta">
 										<li class="video">{{ category.quotes }}</li>
 									</ul>
@@ -247,24 +245,18 @@
 							<div class="blg_grid_box">
 								{% for new in news %}
 								<div class="blg_grid_thumb">
-									<a href="blog-detail.html"><img src="{{ new.news_image.url }}" class="img-fluid" alt="" /></a>
+									<a href="{% url 'reportdetail' new.id %}"><img src="{{ new.news_image.url }}" class="img-fluid" alt="" /></a>
 								</div>
 								<div class="blg_grid_caption">
 									<div class="blg_tag"><span>{{ new.news_category }}</span></div>
-									<div class="blg_title"><h4><a href="blog-detail.html">{{ new.title }}</a></h4></div>
+									<div class="blg_title"><h4><a href="{% url 'reportdetail' new.id %}">{{ new.title }}</a></h4></div>
 									<div class="blg_desc"><p>{{ new.description |truncatewords:11}}</p></div>
 								</div>
 								<div class="crs_grid_foot">
 									<div class="crs_flex">
-										<div class="crs_fl_first">
-											<div class="crs_tutor">
-												<div class="crs_tutor_thumb"><a href="instructor-detail.html"><img src="assets/img/team-5.jpg" class="img-fluid circle" alt="" /></a></div>
-											</div>
-										</div>
 										<div class="crs_fl_last">
 											<div class="foot_list_info">
 												<ul>
-													<li><div class="elsio_ic"><i class="fa fa-eye text-success"></i></div><div class="elsio_tx">10k Views</div></li>
 													<li><div class="elsio_ic"><i class="fa fa-clock text-warning"></i></div><div class="elsio_tx">10 July 2021</div></li>
 												</ul>
 											</div>

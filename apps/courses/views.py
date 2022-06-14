@@ -8,18 +8,14 @@ from django.db.models import Q
 def course_detail(request, id):
     course = Course.objects.get(id = id)
     courses = Course.objects.all()
-    random_courses = Course.objects.all().order_by('?')[:20]
+    random_courses = Course.objects.all().order_by('?')[:5]
     home = Setting.objects.latest('id')
     categories = Category.objects.all()
-    qury_obj = request.GET.get('key')
 
     if 'comment' in request.POST:
         id = request.POST.get('post_id')
         message = request.POST.get('comment_message')
         comment = CourseComment.objects.create(message=message, course=course, user=request.user)
-        
-    if qury_obj is not None:
-        courses = Course.objects.filter(Q(title__icontains = qury_obj))
 
     context = {
         'course' : course,
@@ -27,9 +23,23 @@ def course_detail(request, id):
         'random_courses' : random_courses,
         'home' : home,
         'categories' : categories,
-        'qury_obj' : qury_obj,
     }
     return render(request, 'courses/detail.html', context)
+
+
+def course_search(request):
+    courses = Course.objects.all()
+    qury_obj = request.GET.get('key')
+    home = Setting.objects.latest('id')
+    if qury_obj:
+        courses = Course.objects.filter(Q(title__icontains = qury_obj))
+    context = {
+        'home' : home, 
+        'courses' : courses,
+    }
+    return render(request, 'courses/search.html', context)
+
+
 
 def enroll(request):
     home = Setting.objects.latest('id')

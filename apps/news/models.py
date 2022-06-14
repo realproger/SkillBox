@@ -8,10 +8,14 @@ from apps.users.models import User
 
 class News(models.Model):
     title = models.TextField()
+    reporter = models.CharField(max_length=255)
     news_image = models.ImageField(upload_to = "imagenews/")
     description = models.TextField()
+    main_text = models.TextField()
     news_category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="categorynews")
     news_quotes = models.TextField()
+    author_quote = models.CharField(max_length=255)
+    
     
     
     def __str__(self):
@@ -21,6 +25,7 @@ class News(models.Model):
         verbose_name = "Новость"
         verbose_name_plural = "Новости"
     
+
 
 
     

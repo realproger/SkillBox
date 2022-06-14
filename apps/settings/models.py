@@ -19,7 +19,7 @@ class Partners(models.Model):
     partners_image = models.ImageField(upload_to = "partners_image/")
 
     def __str__(self):
-        return self.title
+        return self.name
 
     class Meta:
         verbose_name = "Партнёр"
