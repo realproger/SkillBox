@@ -8,7 +8,10 @@ from django.db.models import Q
 def course_detail(request, id):
     course = Course.objects.get(id = id)
     courses = Course.objects.all()
-    random_courses = Course.objects.all().order_by('?')[:5]
+    one_random_course = Course.objects.all().order_by('?')[:1]
+    two_random_course = Course.objects.all().order_by('?')[:1]
+    three_random_course = Course.objects.all().order_by('?')[:1]
+    four_random_course = Course.objects.all().order_by('?')[:1]
     home = Setting.objects.latest('id')
     categories = Category.objects.all()
 
@@ -20,7 +23,10 @@ def course_detail(request, id):
     context = {
         'course' : course,
         'courses' : courses,
-        'random_courses' : random_courses,
+        'one_random_course' : one_random_course,
+        'two_random_course' : two_random_course,
+        'three_random_course' : three_random_course,
+        'four_random_course' : four_random_course,
         'home' : home,
         'categories' : categories,
     }

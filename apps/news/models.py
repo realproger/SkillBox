@@ -15,7 +15,7 @@ class News(models.Model):
     news_category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="categorynews")
     news_quotes = models.TextField()
     author_quote = models.CharField(max_length=255)
-    
+    posted = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     
     
     def __str__(self):

@@ -96,7 +96,7 @@
 						<div class="col-lg-4 col-md-4 col-sm-6">
 							<div class="edu_cat_2 cat-1">
 								<div class="edu_cat_icons">
-									<a class="pic-main" href="#"><img src="{{ category.image.url }}" class="img-fluid" alt="" /></a>
+									<a class="pic-main" href="{% url 'sort_course' category.id %}"><img src="{{ category.image.url }}" class="img-fluid" alt="" /></a>
 								</div>
 								<div class="edu_cat_data">
 									<h4 class="title"><a href="{% url 'sort_course' category.id %}">{{ category.title }}</a></h4>
@@ -197,7 +197,7 @@
 											<div class="_testimonial_flex_first">
 												{% if comment.user.profile_image %}
 												<div class="_tsl_flex_thumb">
-													<img src="{{ user.profile_image.url }}" class="img-fluid" alt="">
+													<img src="{{ comment.user.profile_image.url }}" class="img-fluid" alt="">
 												</div>
 												{% else %}
 												<div class="_tsl_flex_thumb">
@@ -257,7 +257,7 @@
 										<div class="crs_fl_last">
 											<div class="foot_list_info">
 												<ul>
-													<li><div class="elsio_ic"><i class="fa fa-clock text-warning"></i></div><div class="elsio_tx">10 July 2021</div></li>
+													<li><div class="elsio_ic"><i class="fa fa-clock text-warning"></i></div><div class="elsio_tx">{{ new.posted }}</div></li>
 												</ul>
 											</div>
 										</div>
